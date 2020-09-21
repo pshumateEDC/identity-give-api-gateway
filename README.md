@@ -40,7 +40,20 @@ cf logs <your-gateway-name>
 ```
 to tail the logs. Include `--recent` if you want to just dump the logs instead.
 
+
+### Kong Admin API Interface
+
+Kong plugins and services can be set up manually through the Kong Admin API. In order to begin set up, a port
+must be opened up locally via ssh tunneling.
+
+```
+cf ssh -N -T -L 8081:localhost:8081 give-api-gateway
+```
+
+Curl requests can be made to the local port to set up services and plugins following the [Admin API specifications](https://docs.konghq.com/2.1.x/admin-api/). 
+
 ### References
 - [cloud-gov/cf-kong](https://github.com/cloud-gov/cf-kong)
 - [Kong Quickstart](https://docs.konghq.com/2.1.x/getting-started/quickstart/)
 - [Kong Configuration Reference](https://docs.konghq.com/2.1.x/configuration/)
+- [Kong Admin API](https://docs.konghq.com/2.1.x/admin-api/)
