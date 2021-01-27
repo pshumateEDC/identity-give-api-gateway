@@ -46,7 +46,7 @@ curl -X POST http://localhost:8081/plugins/ \
 curl -X POST \
     --url "localhost:8081/services" \
     --data "name=idemia-microservice" \
-    --data "url=http://ipp-idemia-busy-eland-mg.app.cloud.gov/"
+    --data "url=https://ipp-idemia-busy-eland-mg.app.cloud.gov/"
 
 # add GET route to idemia service
 curl -i -X POST \
