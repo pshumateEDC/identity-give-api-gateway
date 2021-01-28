@@ -18,8 +18,9 @@ curl -X POST \
 # add routes to auth service
 curl -i -X POST \
     --url http://localhost:8081/services/auth-service/routes \
+    --data "name=auth-route" \
     --data 'paths[]=/auth' \
-    --data 'methods[]=GET&methods[]=POST'
+    --data 'methods[]=GET&methods[]=POST&methods[]=OPTIONS'
 
 # add oauth plugin to service
 curl -X POST http://localhost:8081/services/auth-service/plugins/ \
@@ -46,13 +47,20 @@ curl -X POST http://localhost:8081/plugins/ \
 curl -X POST \
     --url "localhost:8081/services" \
     --data "name=idemia-microservice" \
-    --data "url=http://ipp-idemia-busy-eland-mg.app.cloud.gov/"
+    --data "url=https://identity-give-ipp.app.cloud.gov"
 
 # add GET route to idemia service
 curl -i -X POST \
     --url http://localhost:8081/services/idemia-microservice/routes \
-    --data 'paths[]=/idemia' \
-    --data 'methods[]=GET'
+    --data "name=idemia-route" \
+    --data "paths[]=/ipp" \
+    --data "methods[]=GET&methods[]=OPTIONS"
+
+# add CORS Plugin
+curl -X POST http://localhost:8081/plugins/ \
+    --data "name=cors"  \
+    --data "config.origins=*" \
+    --data "config.headers=*"
 
 # run unit tests
 pytest tests/test_kong.py
