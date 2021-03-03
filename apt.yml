@@ -1,7 +1,11 @@
 ---
 keys:
-- https://bintray.com/user/downloadSubjectPublicKey?username=bintray
+  - https://bintray.com/user/downloadSubjectPublicKey?username=bintray
 repos:
-- deb https://kong.bintray.com/kong-deb bionic main
+  - deb https://kong.bintray.com/kong-deb bionic main
 packages:
+<<<<<<< HEAD
 - kong=2.3.1
+=======
+  - kong=2.3.0
+>>>>>>> upstream/main
